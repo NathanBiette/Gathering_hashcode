@@ -51,7 +51,7 @@ for time in range(info['steps']):
 total_steps = 1000
 constante = math.log(2)
 #le score de l'assignment d'origine (mettre les arguments)
-score = totalScore()
+score = totalScore(ride_assignement, info['bonus'], available_rides)
 
 def proba_selection(actual_step):
     return 1 - math.exp((-1)*constante/actual_step)
