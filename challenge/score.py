@@ -1,6 +1,5 @@
-def scoreRide(car, ride, time, bonus) :
-    xCar = car[0]
-    yCar = car[1]
+def scoreRide(car, ride, time, bonus, tableauCar, tableauRide) :
+    (xCar, yCar) = posCar(car, tableauCar, tableauRide):
     xStart = ride[0][0]
     yStart = ride[0][1]
     xFinish = ride[1][0]
