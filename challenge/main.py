@@ -20,7 +20,7 @@ timer = []
 for vehicle_number in range(info['vehicles']):
     best_ride = find_best_ride(vehicle_number, available_rides)
     ride_assignment += [[best_ride]]
-    timer += [ride_time(best_ride)]
+    timer += [setTimer(vehicle_number, best_ride, 0, ride_assignment, available_rides)]
     update_available_rides(available_rides, best_ride)
 
 #boucle sur le temps (chaque étapes)
