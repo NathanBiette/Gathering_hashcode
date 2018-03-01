@@ -2,6 +2,7 @@ from gathering_parser import GatheringParser as Parser
 import sys
 from math import *
 import random
+from Utilities.py import *
 
 parser = Parser()
 if len(sys.argv) == 2:
@@ -20,10 +21,12 @@ for vehicle_number in range(info['vehicles']):
     best_ride = find_best_ride(vehicle_number, available_rides)
     ride_assignment += [[best_ride]]
     timer += [ride_time(best_ride)]
-    #il faut trouver un moyen de supprimer le ride de la liste des available une fois trouvé et assigné
+    update_available_rides(available_rides, best_ride)
 
 #boucle sur le temps (chaque étapes)
 for time in range(info['steps']):
+    # decrease the value of the timers
+    TempsSuivant(TableauTimer)
     #trouve les vehicule ayant fini
     finished_vehicles = check(timer)
     for vehicle_number in finished_vehicles:
@@ -33,6 +36,7 @@ for time in range(info['steps']):
         ride_assignment[vehicle_number] += [best_ride]
         #reset le temps
         timer[vehicle_number] = ride_time(best_ride)
+
 
 
 #on va maintenant optimiser
