@@ -12,7 +12,8 @@ class GatheringParser:
 				'pos_start': (int(line_datas[0]), int(line_datas[1])),
 				'pos_finish': (int(line_datas[2]), int(line_datas[3])),
 				'start': int(line_datas[4]),
-				'finish': int(line_datas[5])
+				'finish': int(line_datas[5]),
+				'is_complete': False
 			}
 			rides.append(infos)
 
