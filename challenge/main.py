@@ -1,5 +1,7 @@
 from gathering_parser import GatheringParser as Parser
 import sys
+from math import *
+import random
 
 parser = Parser()
 if len(sys.argv) == 2:
@@ -31,3 +33,26 @@ for time in range(info['steps']):
         ride_assignment[vehicle_number] += [best_ride]
         #reset le temps
         timer[vehicle_number] = ride_time(best_ride)
+
+
+#on va maintenant optimiser
+
+#le nombre d'iteration de l'optiisation du score
+total_steps = 1000
+constante = math.log(2)
+#le score de l'assignment d'origine (mettre les arguments)
+score = total_score()
+
+def proba_selection(actual_step):
+    return 1 - math.exp((-1)*constante/actual_step)
+
+for actual_step in range(total_steps):
+    #on bidouille de manière random les rides
+    new_ride_assignment = modify(ride_assignment)
+    if total_score(new_ride_assignment) > score:
+        ride_assignment = new_ride_assignment
+    else:
+        if random.uniform(0, 1) < proba_selection(actual_step):
+            ride_assignment = new_ride_assignment
+
+#fin on a un ride assignment qui est meilleur (en théorie)
