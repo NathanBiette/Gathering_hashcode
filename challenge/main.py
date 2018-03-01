@@ -23,7 +23,7 @@ timer = []
 
 #initialisation step
 for vehicle_number in range(info['vehicles']):
-    best_ride = find_best_ride(vehicle_number, available_rides)
+    best_ride = find_best_ride(vehicle_number,timer, info['bonus'], ride_assignement, available_rides)
     ride_assignment += [[best_ride]]
     timer += [setTimer(vehicle_number, best_ride, 0, ride_assignment, available_rides)]
     available_rides[best_ride]['is_complete'] = True
