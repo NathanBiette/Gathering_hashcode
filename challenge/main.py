@@ -36,7 +36,7 @@ for time in range(info['steps']):
     finished_vehicles = check(timer)
     for vehicle_number in finished_vehicles:
         #toruve le prochain best ride
-        best_ride = find_best_ride(vehicle_number, available_rides)
+        best_ride = find_best_ride(vehicle_number,timer, info['bonus'], ride_assignement, available_rides)
         #ajoute le meilleur ride trouvé
         ride_assignment[vehicle_number] += [best_ride]
         available_rides[best_ride]['is_complete'] = True
