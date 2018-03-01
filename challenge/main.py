@@ -41,7 +41,7 @@ for time in range(info['steps']):
         ride_assignment[vehicle_number] += [best_ride]
         available_rides[best_ride]['is_complete'] = True
         #reset le temps
-        timer[vehicle_number] = ride_time(best_ride)
+        timer[vehicle_number] = setTimer(vehicle_number, best_ride, time, ride_assignment, available_rides)
 
 
 
