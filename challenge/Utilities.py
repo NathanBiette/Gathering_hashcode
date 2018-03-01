@@ -1,5 +1,25 @@
-def distance(x1, y1, x2, y2):
-    return abs(x2 - x1) + abs(y2 - y1)
+def distance(ride):
+    return abs(ride['pos_finish'][0] - ride['pos_start'][0]) + abs(ride['pos_finish'][1] - ride['pos_start'][1])
 
-def coutTrajet(xVoiture, yVoiture, xDepart, yDepart, xArrivee, yArrivee):
-    return distance(xVoiture, yVoiture, xDepart, yDepart) + distance(xDepart, yDepart, xArrivee, yArrivee)
+def setTimer(voiture, ride, currentTime, tableauCar, tableauRide):
+    car = posCar(voiture, tableauCar, tableauRide)
+    tempsTrajet = abs(car[0] - ride['pos_start'][0]) + abs(car[1] - ride['pos_start'][1])
+    tempsAttente = max(0, ride['start'] - (tempsTrajet + currentTime))
+    return distance(ride) + tempsAttente + tempsTrajet
+
+def DetectZero(TableauTimer):
+    res = []
+    for i in range(len(TableauTimer)):
+        if TableauTimer[i] == 0:
+            res.append(i)
+    return res
+
+def TempsSuivant(TableauTimer):
+    for x in TableauTimer:
+        x -= 1
+
+def posCar(nCar, tableauCar, tableauRide):
+    length = len(tableauCar[nCar])
+    if length == 0:
+        return (0, 0)
+    return (tableauRide[tableauCar[-1]]['pos_finish'][0], tableauRide[tableauCar[-1]]['pos_finish'][1])
