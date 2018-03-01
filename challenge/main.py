@@ -1,15 +1,19 @@
 from gathering_parser import GatheringParser as Parser
+from submission import generate_output_file as got
 import sys
+import re
 from math import *
 import random
-from Utilities.py import *
+from Utilities import *
 
 parser = Parser()
 if len(sys.argv) == 2:
-    info = parser.parse(sys.argv[1])
-    print(info)
+	parser.parse(sys.argv[1])
 else:
-    print("Syntax error:\r\nUsage : python main.py file_name")
+	print("Syntax error:\r\nUsage : python main.py file_name")
+	exit()
+splited_path = re.split('/|\.', sys.argv[1])
+file_name = splited_path[len(splited_path) - 2] # just before the .in extension
 
 #stocke les rides pour les supprimer petit a petit
 available_rides = info['rides']
