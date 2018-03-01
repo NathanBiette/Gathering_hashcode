@@ -1,3 +1,5 @@
+from Utilities import *
+
 def scoreRide(car, ride, time, bonus, tableauCar, tableauRide) :
     (xCar, yCar) = posCar(car, tableauCar, tableauRide)
     xStart = ride['pos_start'][0]
