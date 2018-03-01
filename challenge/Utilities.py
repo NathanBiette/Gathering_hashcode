@@ -9,7 +9,7 @@ def setTimer(voiture, ride, currentTime, tableauCar, tableauRide):
     tempsAttente = max(0, ride['start'] - (tempsTrajet + currentTime))
     return distance(ride) + tempsAttente + tempsTrajet
 
-def DetectZero(TableauTimer):
+def check(TableauTimer):
     res = []
     for i in range(len(TableauTimer)):
         if TableauTimer[i] == 0:
