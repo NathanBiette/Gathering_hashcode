@@ -16,3 +16,9 @@ def DetectZero(TableauTimer):
 def TempsSuivant(TableauTimer):
     for x in TableauTimer:
         x -= 1
+
+def posCar(nCar, tableauCar, tableauRide):
+    length = len(tableauCar[nCar])
+    if length == 0:
+        return (0, 0)
+    return (tableauRide[tableauCar[-1]]['pos_finish'][0], tableauRide[tableauCar[-1]]['pos_finish'][1])
